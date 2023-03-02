@@ -19,15 +19,17 @@ const getEmpresas = async (req = request, res = response) => {
 
 const postEmpresa = async (req = request, res = response) => {
 
-    const {nombre, correo, password, rol} = req.body;
-    const empresaDB = new Empresa({nombre, correo, password, rol});
+    const {nombre, correo, password, rol, sucursales} = req.body;
+    const empresaDB = new Empresa({nombre, correo, password, rol, sucursales});
+
+
 
     const salt = bcryptjs.genSaltSync();
     empresaDB.password = bcryptjs.hashSync(password, salt);
 
     await empresaDB.save();
 
-    res.json(201).json({
+    res.status(201).json({
         msg: 'POST EMPRESAS',
         empresaDB
     });
@@ -42,10 +44,10 @@ const putEmpresa = async (req = request, res = response) => {
     const salt = bcryptjs.genSaltSync();
     resto.password = bcryptjs.hashSync(resto.password, salt);
 
-    const empresaEditada = await Empresa.findByIdAndUpdate(id, resto);
+    const empresaEditada = await Empresa.findByIdAndUpdate(id, resto, {new: true});
 
-    res.json({
-        msg: 'PUT EMPRESAS',
+    res.status(200).json({
+        msg: 'EMPRESA ACTUALIZADA',
         empresaEditada
     });
 }
@@ -60,6 +62,7 @@ const deleteEmpresa = async (req = request, res = response) => {
         empresaEliminada
     });
 }
+
 
 module.exports = {
     getEmpresas,

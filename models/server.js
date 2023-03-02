@@ -13,7 +13,8 @@ class Server {
 
         this.paths = {
             auth: '/api/auth',
-            empresa: '/api/empresa' 
+            empresa: '/api/empresa',
+            sucursal: '/api/sucursal' 
         }
 
         //Conectar a base de datos
@@ -51,6 +52,7 @@ class Server {
     routes(){
         this.app.use( this.paths.auth , require('../routes/auth'));
         this.app.use( this.paths.empresa , require('../routes/empresa'));
+        this.app.use( this.paths.sucursal, require('../routes/sucursal'));
     }
 
 

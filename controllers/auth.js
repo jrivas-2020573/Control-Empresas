@@ -26,9 +26,9 @@ const login = async(req = request, res = response) => {
 
         const token = await generarJWT(empresa.id);
 
-        res,json({
+        res.status(200).json({
             msg: 'Login Auth Exitoso',
-            email, password,
+            correo, password,
             token
         });
     } catch(error){

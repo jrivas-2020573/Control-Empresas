@@ -17,7 +17,15 @@ const esRoleValido = async( rol = '') => {
     }
 }
 
+const existeEmpresaPorId = async(id) => {
+    const existIdOfCompany = await Empresa.findById( id );
+    if ( !existIdOfCompany) {
+        throw new Error(`El id: ${id} no existe en la DB`);
+    }
+}
+
 module.exports = {
     emailExiste,
-    esRoleValido
+    esRoleValido,
+    existeEmpresaPorId
 }

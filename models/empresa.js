@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const EmpresaSchema = Schema({
+const EmpresaSchema = Schema({ 
     nombre: {
         type: String,
         required: [true, 'El nombre es obligatorio']
@@ -18,10 +18,10 @@ const EmpresaSchema = Schema({
         type: String,
         required: true
     },
-    // sucursales: {
-    //     type: Array,
-    //     default: []
-    // }
+    sucursales: {
+        type: Array,
+        default: []
+    }
 });
 
 module.exports = model('Empresa', EmpresaSchema)
