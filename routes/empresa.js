@@ -2,7 +2,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { getEmpresas, postEmpresa, putEmpresa, deleteEmpresa } = require('../controllers/empresa');
+const { getEmpresas, postEmpresa, putEmpresa, deleteEmpresa, getMySucursales } = require('../controllers/empresa');
 const { emailExiste, esRoleValido, existeEmpresaPorId } = require('../helpers/db-validators');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
@@ -41,6 +41,10 @@ router.delete('/eliminar/:id',[
     check('id').custom( existeEmpresaPorId ),
     validarCampos
 ], deleteEmpresa);
+
+router.get('/MySucursales', [
+    validarJWT
+], getMySucursales);
 
 
 module.exports = router;

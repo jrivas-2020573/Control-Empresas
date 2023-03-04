@@ -63,10 +63,20 @@ const deleteEmpresa = async (req = request, res = response) => {
     });
 }
 
+const getMySucursales = async( req = request, res = response) => {
+    const empresa = req.empresa._id;
+    const sucursales = req.empresa.sucursales
+
+    res.json({
+        msg: 'Tus sucursales',
+        sucursales
+    })
+}
 
 module.exports = {
     getEmpresas,
     postEmpresa,
     putEmpresa,
-    deleteEmpresa
+    deleteEmpresa,
+    getMySucursales
 }

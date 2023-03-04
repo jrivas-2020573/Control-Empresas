@@ -1,9 +1,9 @@
 const {Schema, model} = require('mongoose');
 
 const SucursalSchema = new Schema({
-    departamento: {
+    municipio: {
         type: String,
-        required: [true, 'El departamento es obligatorio']
+        required: [true, 'El municipio es obligatorio']
     },
     direccion: {
         type: String
@@ -13,8 +13,7 @@ const SucursalSchema = new Schema({
         ref: 'Empresa'
     },
     empresa: {
-        type: Array,
-        default: []
+        type: Array
     }
 });
 

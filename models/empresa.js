@@ -19,8 +19,7 @@ const EmpresaSchema = Schema({
         required: true
     },
     sucursales: {
-        type: Array,
-        default: []
+        type: Array
     }
 });
 

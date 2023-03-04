@@ -15,11 +15,11 @@ const getSucursales = async (req = request, res = response) => {
 }
 
 const postSucursal = async(req = request, res = response) => {
-    const departamento = req.body.departamento;
+    const municipio = req.body.municipio;
     const direccion = req.body.direccion;
     const usuario = req.empresa._id
 
-    const sucursalDB = new Sucursal({departamento, direccion, usuario});
+    const sucursalDB = new Sucursal({municipio, direccion, usuario});
     await sucursalDB.save();
 
     res.status(201).json({
@@ -43,7 +43,7 @@ const deleteSucursal = async(req = request, res = response) => {
     const {id} = req.params;
     const existeSucursal = await Sucursal.findOne({_id: id});
     const empresas = existeSucursal.empresa;
-    const maestro = existeSucursal.usuario;
+    const user = existeSucursal.usuario;
 
     const sucursalEliminada = await Sucursal.findByIdAndDelete(id);
 
@@ -54,7 +54,7 @@ const deleteSucursal = async(req = request, res = response) => {
         );   
     }
     await Empresa.findByIdAndUpdate(
-        {_id: maestro},
+        {_id: user},
         {$pull: {'empresas': id}},
     )
     res.status(200).json({
