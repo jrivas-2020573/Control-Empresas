@@ -28,7 +28,7 @@ router.put('/editar/:id',[
     check('id', 'No es un ID valido').isMongoId(),
     check('id').custom( existeEmpresaPorId ),
     check('correo', 'El correo no es valido').isEmail(),
-    check('correo').custom( emailExiste ),
+    //check('correo').custom( emailExiste ),
     check('password', 'La password es obligatorio para el post').not().isEmpty(),
     check('password', 'La passwarod debe ser mayor a 6 letras').isLength({ min: 6 }),
     check('rol').custom( esRoleValido ),

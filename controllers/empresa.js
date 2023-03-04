@@ -39,7 +39,7 @@ const putEmpresa = async (req = request, res = response) => {
 
     const {id} = req.params;
 
-    const {_id, rol, ...resto} = req.body;
+    const {_id, ...resto} = req.body;
 
     const salt = bcryptjs.genSaltSync();
     resto.password = bcryptjs.hashSync(resto.password, salt);
@@ -51,6 +51,7 @@ const putEmpresa = async (req = request, res = response) => {
         empresaEditada
     });
 }
+
 
 const deleteEmpresa = async (req = request, res = response) => {
     const {id} = req.params;
