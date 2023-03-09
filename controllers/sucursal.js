@@ -61,22 +61,6 @@ const deleteSucursal = async (req = request, res = response) => {
         msg: 'Sucursal eliminado',
         sucursalEliminada
     })
-
-
-    // for(let empresa of empresas){
-    //     await Empresa.findByIdAndUpdate(
-    //         {_id: empresa},
-    //         {$pull: {'empresas': id}},
-    //     );   
-    // }
-    // await Empresa.findByIdAndUpdate(
-    //     {_id: user},
-    //     {$pull: {'empresas': id}},
-    // )
-    // res.status(200).json({
-    //     msg: 'Sucursal eliminado',
-    //     sucursalEliminada
-    // })
 }
 
 const asignarEmpresa = async (req = request, res = response) => {
